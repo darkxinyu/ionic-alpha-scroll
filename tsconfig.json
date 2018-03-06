@@ -18,7 +18,7 @@
     "outDir": "dist"
   },
   "angularCompilerOptions": {
-    "genDir": "aot"
+    "skipTemplateCodegen": true
   },
   "include": [
     "./*.ts",

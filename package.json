@@ -8,7 +8,7 @@
 	"typings": "dist/index.d.ts",
 	"scripts": {
 		"tslint": "tslint -c ./tslint.json -e './src/**/*.d.ts' './src/**/*.ts'",
-		"build": "rm -rf aot dist && ngc",
+		"build": "rm -rf dist && ngc",
 		"postbuild": "npm run copy:scss",
 		"copy:scss": "scripts/copy.sh",
 		"push": "npm run build && npm publish"
@@ -37,23 +37,24 @@
 		"alloytouch-transformjs": "^0.1.0"
 	},
 	"devDependencies": {
-		"@angular/common": "4.1.3",
-		"@angular/compiler": "4.1.3",
-		"@angular/compiler-cli": "4.1.3",
-		"@angular/core": "4.1.3",
-		"@angular/forms": "4.1.3",
-		"@angular/http": "4.1.3",
-		"@angular/platform-browser": "4.1.3",
-		"@angular/platform-browser-dynamic": "4.1.3",
-		"@angular/platform-server": "4.1.3",
+		"@angular/animations": "^5.0.3",
+		"@angular/common": "5.0.3",
+		"@angular/compiler": "5.0.3",
+		"@angular/compiler-cli": "5.0.3",
+		"@angular/core": "5.0.3",
+		"@angular/forms": "5.0.3",
+		"@angular/http": "5.0.3",
+		"@angular/platform-browser": "5.0.3",
+		"@angular/platform-browser-dynamic": "5.0.3",
+		"@angular/platform-server": "5.0.3",
 		"@ionic-native/core": "4.1.0",
 		"@ionic/storage": "2.0.1",
-		"ionic-angular": "3.6.1",
+		"ionic-angular": "^3.9.2",
 		"ionicons": "3.0.0",
-		"rxjs": "5.4.0",
+		"rxjs": "^5.5.0",
 		"tslint": "^5.4.3",
 		"tslint-ionic-rules": "0.0.11",
-		"typescript": "2.3.4",
+		"typescript": "^2.4.2",
 		"zone.js": "0.8.12"
 	}
 }

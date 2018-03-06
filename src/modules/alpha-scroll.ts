@@ -25,7 +25,7 @@ import * as Transform from 'alloytouch-transformjs';
     <ng-template [ngTemplateOutlet]="headerTemplate" ></ng-template>
         <div *ngFor="let item of sortedItems">
           <ion-item-divider id="scroll-letter-{{item.letter}}" *ngIf="item.isDivider">{{item.letter}}</ion-item-divider>
-          <ng-template [ngTemplateOutlet]="itemTemplate" [ngOutletContext]="{'item': item, 'currentPageClass': currentPageClass}" *ngIf="!item.isDivider">
+          <ng-template [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{'item': item, 'currentPageClass': currentPageClass}" *ngIf="!item.isDivider">
           </ng-template>
         </div>
       </ion-list>

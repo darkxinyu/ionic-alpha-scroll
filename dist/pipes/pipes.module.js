@@ -18,23 +18,23 @@ var PipesModule = (function () {
             ]
         };
     };
+    PipesModule.decorators = [
+        { type: NgModule, args: [{
+                    exports: [
+                        MapToIterable,
+                        OrderBy,
+                        TrustResourceUrl
+                    ],
+                    declarations: [
+                        MapToIterable,
+                        OrderBy,
+                        TrustResourceUrl
+                    ]
+                },] },
+    ];
+    /** @nocollapse */
+    PipesModule.ctorParameters = function () { return []; };
     return PipesModule;
 }());
 export { PipesModule };
-PipesModule.decorators = [
-    { type: NgModule, args: [{
-                exports: [
-                    MapToIterable,
-                    OrderBy,
-                    TrustResourceUrl
-                ],
-                declarations: [
-                    MapToIterable,
-                    OrderBy,
-                    TrustResourceUrl
-                ]
-            },] },
-];
-/** @nocollapse */
-PipesModule.ctorParameters = function () { return []; };
 //# sourceMappingURL=pipes.module.js.map

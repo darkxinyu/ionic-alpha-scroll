@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, TemplateRef, ViewChild } from '@angular/core';
 import { OrderBy } from '../pipes/order-by';
 import * as AlloyTouch from 'alloytouch';
 import * as Transform from 'alloytouch-transformjs';
@@ -67,16 +67,25 @@ var AlphaScroll = (function () {
                 min = 0; // 解决列表项不满一屏时报 min > max 的问题
             _this.alloyTouch = new AlloyTouch({
                 touch: _this.mainWrapper.nativeElement,
+                // 反馈触摸的dom
                 vertical: true,
+                // 不必需，默认是true代表监听竖直方向touch
                 target: _this.list.nativeElement,
+                // 运动的对象
                 property: 'translateY',
+                // 被运动的属性
                 min: min,
                 max: 0,
+                // 不必需,滚动属性的最大值
                 sensitivity: 1,
+                // 不必需,触摸区域的灵敏度，默认值为1，可以为负数
                 factor: 1,
+                // 不必需,表示触摸位移与被运动属性映射关系，默认值是1
                 step: 45,
+                // 用于校正到step的整数倍
                 bindSelf: false,
                 maxSpeed: 2,
+                // 不必需，触摸反馈的最大速度限制
                 initialValue: 0
             });
             var chooseEle = function (evt) {
@@ -95,16 +104,25 @@ var AlphaScroll = (function () {
             };
             _this.sidebarTouch = new AlloyTouch({
                 touch: _this.sidebar.nativeElement,
+                // 反馈触摸的dom
                 vertical: true,
+                // 不必需，默认是true代表监听竖直方向touch
                 target: _this.sidebar.nativeElement,
+                // 运动的对象
                 property: 'translateY',
+                // 被运动的属性
                 min: 0,
                 max: 0,
+                // 不必需,滚动属性的最大值
                 sensitivity: 1,
+                // 不必需,触摸区域的灵敏度，默认值为1，可以为负数
                 factor: 1,
+                // 不必需,表示触摸位移与被运动属性映射关系，默认值是1
                 step: 45,
+                // 用于校正到step的整数倍
                 bindSelf: false,
                 maxSpeed: 2,
+                // 不必需，触摸反馈的最大速度限制
                 initialValue: 0,
                 touchStart: function () {
                     _this.alloyTouch.stop();
@@ -147,28 +165,28 @@ var AlphaScroll = (function () {
         }
         return result;
     };
+    AlphaScroll.decorators = [
+        { type: Component, args: [{
+                    selector: 'ion-alpha-scroll',
+                    template: "\n  <section class=\"alpha-list-wrapper\" #wrapper>\n    <ion-list class=\"ion-alpha-list\" #list>\n    <ion-item-divider id=\"scroll-letter-\u2191\" style=\"display:none\" *ngIf=\"headerTemplate!=null\">\u2191</ion-item-divider>\n    <ng-template [ngTemplateOutlet]=\"headerTemplate\" ></ng-template>\n        <div *ngFor=\"let item of sortedItems\">\n          <ion-item-divider id=\"scroll-letter-{{item.letter}}\" *ngIf=\"item.isDivider\">{{item.letter}}</ion-item-divider>\n          <ng-template [ngTemplateOutlet]=\"itemTemplate\" [ngTemplateOutletContext]=\"{'item': item, 'currentPageClass': currentPageClass}\" *ngIf=\"!item.isDivider\">\n          </ng-template>\n        </div>\n      </ion-list>\n    </section>\n    <ul class=\"ion-alpha-sidebar\" [ngStyle]=\"calculateDimensionsForSidebar()\" #sidebar>\n      <li *ngFor=\"let alpha of alphabet\" [hidden]=\"!alpha.isActive\" [class]=\"setAlphaClass(alpha)\">\n        <a>{{alpha.letter}}</a>\n      </li>\n    </ul>"
+                },] },
+    ];
+    /** @nocollapse */
+    AlphaScroll.ctorParameters = function () { return [
+        { type: ElementRef, },
+        { type: OrderBy, },
+    ]; };
+    AlphaScroll.propDecorators = {
+        "mainWrapper": [{ type: ViewChild, args: ['wrapper',] },],
+        "list": [{ type: ViewChild, args: ['list',] },],
+        "sidebar": [{ type: ViewChild, args: ['sidebar',] },],
+        "listData": [{ type: Input },],
+        "key": [{ type: Input },],
+        "itemTemplate": [{ type: Input },],
+        "currentPageClass": [{ type: Input },],
+        "headerTemplate": [{ type: Input },],
+    };
     return AlphaScroll;
 }());
 export { AlphaScroll };
-AlphaScroll.decorators = [
-    { type: Component, args: [{
-                selector: 'ion-alpha-scroll',
-                template: "\n  <section class=\"alpha-list-wrapper\" #wrapper>\n    <ion-list class=\"ion-alpha-list\" #list>\n    <ion-item-divider id=\"scroll-letter-\u2191\" style=\"display:none\" *ngIf=\"headerTemplate!=null\">\u2191</ion-item-divider>\n    <ng-template [ngTemplateOutlet]=\"headerTemplate\" ></ng-template>\n        <div *ngFor=\"let item of sortedItems\">\n          <ion-item-divider id=\"scroll-letter-{{item.letter}}\" *ngIf=\"item.isDivider\">{{item.letter}}</ion-item-divider>\n          <ng-template [ngTemplateOutlet]=\"itemTemplate\" [ngOutletContext]=\"{'item': item, 'currentPageClass': currentPageClass}\" *ngIf=\"!item.isDivider\">\n          </ng-template>\n        </div>\n      </ion-list>\n    </section>\n    <ul class=\"ion-alpha-sidebar\" [ngStyle]=\"calculateDimensionsForSidebar()\" #sidebar>\n      <li *ngFor=\"let alpha of alphabet\" [hidden]=\"!alpha.isActive\" [class]=\"setAlphaClass(alpha)\">\n        <a>{{alpha.letter}}</a>\n      </li>\n    </ul>"
-            },] },
-];
-/** @nocollapse */
-AlphaScroll.ctorParameters = function () { return [
-    { type: ElementRef, },
-    { type: OrderBy, },
-]; };
-AlphaScroll.propDecorators = {
-    'mainWrapper': [{ type: ViewChild, args: ['wrapper',] },],
-    'list': [{ type: ViewChild, args: ['list',] },],
-    'sidebar': [{ type: ViewChild, args: ['sidebar',] },],
-    'listData': [{ type: Input },],
-    'key': [{ type: Input },],
-    'itemTemplate': [{ type: Input },],
-    'currentPageClass': [{ type: Input },],
-    'headerTemplate': [{ type: Input },],
-};
 //# sourceMappingURL=alpha-scroll.js.map

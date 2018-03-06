@@ -21,16 +21,16 @@ var MapToIterable = (function () {
         }
         return result;
     };
+    MapToIterable.decorators = [
+        { type: Pipe, args: [{
+                    name: 'mapToIterable',
+                    pure: true
+                },] },
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    MapToIterable.ctorParameters = function () { return []; };
     return MapToIterable;
 }());
 export { MapToIterable };
-MapToIterable.decorators = [
-    { type: Pipe, args: [{
-                name: 'mapToIterable',
-                pure: true
-            },] },
-    { type: Injectable },
-];
-/** @nocollapse */
-MapToIterable.ctorParameters = function () { return []; };
 //# sourceMappingURL=map-to-iterable.js.map

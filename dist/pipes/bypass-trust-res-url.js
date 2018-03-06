@@ -14,18 +14,18 @@ var TrustResourceUrl = (function () {
         }
         return this.sanitizer.bypassSecurityTrustResourceUrl(value);
     };
+    TrustResourceUrl.decorators = [
+        { type: Pipe, args: [{
+                    name: 'trustResourceUrl',
+                    pure: true
+                },] },
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    TrustResourceUrl.ctorParameters = function () { return [
+        { type: DomSanitizer, },
+    ]; };
     return TrustResourceUrl;
 }());
 export { TrustResourceUrl };
-TrustResourceUrl.decorators = [
-    { type: Pipe, args: [{
-                name: 'trustResourceUrl',
-                pure: true
-            },] },
-    { type: Injectable },
-];
-/** @nocollapse */
-TrustResourceUrl.ctorParameters = function () { return [
-    { type: DomSanitizer, },
-]; };
 //# sourceMappingURL=bypass-trust-res-url.js.map

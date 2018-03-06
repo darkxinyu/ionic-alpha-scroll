@@ -10,23 +10,23 @@ var ScrollModule = (function () {
             ngModule: ScrollModule, providers: []
         };
     };
+    ScrollModule.decorators = [
+        { type: NgModule, args: [{
+                    imports: [
+                        IonicModule,
+                        PipesModule
+                    ],
+                    exports: [
+                        AlphaScroll
+                    ],
+                    declarations: [
+                        AlphaScroll
+                    ]
+                },] },
+    ];
+    /** @nocollapse */
+    ScrollModule.ctorParameters = function () { return []; };
     return ScrollModule;
 }());
 export { ScrollModule };
-ScrollModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    IonicModule,
-                    PipesModule
-                ],
-                exports: [
-                    AlphaScroll
-                ],
-                declarations: [
-                    AlphaScroll
-                ]
-            },] },
-];
-/** @nocollapse */
-ScrollModule.ctorParameters = function () { return []; };
 //# sourceMappingURL=alpha-scroll.module.js.map

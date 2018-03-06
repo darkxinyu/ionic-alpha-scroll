@@ -11,21 +11,21 @@ var AlphaScrollModule = (function () {
             ngModule: AlphaScrollModule, providers: []
         };
     };
+    AlphaScrollModule.decorators = [
+        { type: NgModule, args: [{
+                    imports: [
+                        ScrollModule.forRoot(),
+                        PipesModule.forRoot()
+                    ],
+                    exports: [
+                        ScrollModule,
+                        PipesModule
+                    ]
+                },] },
+    ];
+    /** @nocollapse */
+    AlphaScrollModule.ctorParameters = function () { return []; };
     return AlphaScrollModule;
 }());
 export { AlphaScrollModule };
-AlphaScrollModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    ScrollModule.forRoot(),
-                    PipesModule.forRoot()
-                ],
-                exports: [
-                    ScrollModule,
-                    PipesModule
-                ]
-            },] },
-];
-/** @nocollapse */
-AlphaScrollModule.ctorParameters = function () { return []; };
 //# sourceMappingURL=index.js.map

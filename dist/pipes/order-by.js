@@ -39,16 +39,16 @@ var OrderBy = (function () {
         });
         return result;
     };
+    OrderBy.decorators = [
+        { type: Pipe, args: [{
+                    name: 'orderBy',
+                    pure: true
+                },] },
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    OrderBy.ctorParameters = function () { return []; };
     return OrderBy;
 }());
 export { OrderBy };
-OrderBy.decorators = [
-    { type: Pipe, args: [{
-                name: 'orderBy',
-                pure: true
-            },] },
-    { type: Injectable },
-];
-/** @nocollapse */
-OrderBy.ctorParameters = function () { return []; };
 //# sourceMappingURL=order-by.js.map
